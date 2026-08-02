@@ -240,16 +240,14 @@
         }
 
         function filterContent() {
-            let input = document.getElementById('searchBox5').value || document.getElementById('searchBox').value.toLowerCase();
-            // Fallback for standard searchBox ID used above:
-            let query = document.getElementById('searchBox').value.toLowerCase();
+            let input = document.getElementById('searchBox').value.toLowerCase();
             let items = document.getElementsByClassName('searchable-item');
 
             for (let i = 0; i < items.length; i++) {
                 let text = items[i].innerText.toLowerCase();
                 let keywords = items[i].getAttribute('data-keywords').toLowerCase();
                 
-                if (text.includes(query) || keywords.includes(query)) {
+                if (text.includes(input) || keywords.includes(input)) {
                     items[i].style.display = "";
                 } else {
                     items[i].style.display = "none";
