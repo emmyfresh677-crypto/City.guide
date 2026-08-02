@@ -11,6 +11,7 @@
             --text-color: #333333;
             --heading-color: #007bff;
             --border-color: #e0e0e0;
+            --ad-bg: #f8f9fa;
         }
 
         body.dark-mode {
@@ -19,6 +20,7 @@
             --text-color: #e0e0e0;
             --heading-color: #4dabf7;
             --border-color: #2c2c2c;
+            --ad-bg: #252525;
         }
 
         body { 
@@ -55,7 +57,7 @@
         }
 
         .search-container {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         #searchBox {
@@ -67,6 +69,18 @@
             background-color: var(--card-bg);
             color: var(--text-color);
             box-sizing: border-box;
+        }
+
+        .ad-banner {
+            background-color: var(--ad-bg);
+            border: 2px dashed var(--border-color);
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            color: var(--text-color);
+            font-size: 14px;
+            opacity: 0.8;
         }
 
         .card { 
@@ -102,37 +116,115 @@
     </header>
 
     <div class="search-container">
-        <input type="text" id="searchBox" placeholder="Search services, eateries, emergency..." onkeyup="filterContent()">
+        <input type="text" id="searchBox" placeholder="Search anything (jobs, health, food, transit...)" onkeyup="filterContent()">
     </div>
 
-    <div class="card searchable-item" data-keywords="emergency police fire hospital ambulance">
-        <h2>Emergency & Utility Services</h2>
-        <p>Key contacts for immediate assistance:</p>
+    <!-- Ad Placeholder Section -->
+    <div class="ad-banner">
+        <span>Ad Placeholder (Your ads will show here)</span>
+    </div>
+
+    <div class="card searchable-item" data-keywords="emergency police fire hospital ambulance rescue crisis">
+        <h2>Emergency & Public Safety</h2>
+        <p>Critical contacts for urgent help:</p>
         <ul>
-            <li><strong>Police / General Emergency:</strong> 911 / Local Hotline</li>
-            <li><strong>Fire Department:</strong> Local Station Dispatch</li>
-            <li><strong>City Hospital / Clinic:</strong> 24/7 Medical Care Unit</li>
-            <li><strong>Power & Water Utility Helpline:</strong> Maintenance Desk</li>
+            <li><strong>Police Dispatch:</strong> 911 / Direct Local Line</li>
+            <li><strong>Fire & Rescue:</strong> Station Hotline</li>
+            <li><strong>Emergency Ambulance & Trauma Care:</strong> 24/7 Response Unit</li>
+            <li><strong>Disaster & Crisis Helpline:</strong> Community Support Desk</li>
         </ul>
     </div>
 
-    <div class="card searchable-item" data-keywords="eateries food restaurants best affordable cafes">
-        <h2>Top Rated Eateries</h2>
-        <p>Best affordable food spots and cafes in the neighborhood:</p>
+    <div class="card searchable-item" data-keywords="health medical doctor pharmacy clinic dentist mental health wellbeing">
+        <h2>Healthcare & Wellness</h2>
+        <p>Medical centers, pharmacies, and specialists:</p>
         <ul>
-            <li><strong>Central Perk Cafe:</strong> Great coffee and morning pastries.</li>
-            <li><strong>Corner Grill:</strong> Quick meals, local recipes, and budget-friendly.</li>
-            <li><strong>Green Bowl Salad Bar:</strong> Fresh organic meals and juices.</li>
+            <li><strong>City General Hospital:</strong> Comprehensive emergency and outpatient care.</li>
+            <li><strong>24/7 Community Pharmacy:</strong> Prescriptions, over-the-counter meds, and first aid.</li>
+            <li><strong>Smile Dental Clinic:</strong> General checkups, cleanings, and emergency dental work.</li>
+            <li><strong>Wellness Mental Health Center:</strong> Counseling, support groups, and therapy lines.</li>
         </ul>
     </div>
 
-    <div class="card searchable-item" data-keywords="directory pharmacy grocery transport transit market">
-        <h2>Neighborhood Directory</h2>
-        <p>Essential local spots and transit hubs:</p>
+    <div class="card searchable-item" data-keywords="food eateries restaurants cafes groceries market budget meals coffee">
+        <h2>Food, Dining & Groceries</h2>
+        <p>Where to eat, drink, and shop for fresh food:</p>
         <ul>
-            <li><strong>City Central Pharmacy:</strong> Open daily until late.</li>
-            <li><strong>Fresh Mart Grocery:</strong> Affordable daily supplies and produce.</li>
-            <li><strong>Main Transit Hub:</strong> Bus and shuttle terminal connections.</li>
+            <li><strong>Central Perk Cafe:</strong> Coffee, pastries, and casual remote work seating.</li>
+            <li><strong>Corner Grill:</strong> Budget-friendly hot meals and local specialties.</li>
+            <li><strong>Green Bowl Salad Bar:</strong> Fresh organic vegetables, healthy bowls, and juices.</li>
+            <li><strong>SuperSave Supermarket:</strong> Full grocery supplies, fresh produce, and household goods.</li>
+        </ul>
+    </div>
+
+    <div class="card searchable-item" data-keywords="transport transit bus train airport cabs rideshare parking travel">
+        <h2>Transportation & Travel</h2>
+        <p>Getting around the city efficiently:</p>
+        <ul>
+            <li><strong>Central Transit Terminal:</strong> Main bus and intercity train connections.</li>
+            <li><strong>Metro Subway Line:</strong> Rapid urban transit system stations.</li>
+            <li><strong>City Cabs & Rideshare Hub:</strong> Taxi dispatch stands and pickup zones.</li>
+            <li><strong>Municipal Parking Garage:</strong> Secure long-term and hourly vehicle storage.</li>
+        </ul>
+    </div>
+
+    <div class="card searchable-item" data-keywords="finance bank ATM money cash loan currency exchange investment">
+        <h2>Financial Services & Banking</h2>
+        <p>Banks, cash points, and money management:</p>
+        <ul>
+            <li><strong>First National Bank:</strong> Full-service banking, business loans, and advisors.</li>
+            <li><strong>24-Hour ATM Kiosk:</strong> Quick cash withdrawals and deposits.</li>
+            <li><strong>Global Currency Exchange:</strong> Foreign cash trading and wire transfers.</li>
+        </ul>
+    </div>
+
+    <div class="card searchable-item" data-keywords="utilities power electricity water internet repair maintenance gas">
+        <h2>Utilities & Home Services</h2>
+        <p>Keeping your home powered and connected:</p>
+        <ul>
+            <li><strong>Power & Electricity Board:</strong> Grid fault reporting and meter services.</li>
+            <li><strong>City Water Corporation:</strong> Pipeline repairs and supply inquiries.</li>
+            <li><strong>FiberNet High-Speed Internet:</strong> Broadband support and installations.</li>
+            <li><strong>Handyman & Plumbing Repair:</strong> Emergency home maintenance dispatch.</li>
+        </ul>
+    </div>
+
+    <div class="card searchable-item" data-keywords="jobs employment career agency CV resume hiring work opportunities">
+        <h2>Jobs & Career Support</h2>
+        <p>Finding employment and professional training:</p>
+        <ul>
+            <li><strong>City Employment Bureau:</strong> Job listings, career counseling, and placement.</li>
+            <li><strong>Skill Development Center:</strong> Professional workshops, tech training, and certifications.</li>
+        </ul>
+    </div>
+
+    <div class="card searchable-item" data-keywords="education school university library books learning courses kids">
+        <h2>Education & Learning</h2>
+        <p>Schools, libraries, and study spaces:</p>
+        <ul>
+            <li><strong>Public Central Library:</strong> Free quiet reading rooms, research archives, and Wi-Fi.</li>
+            <li><strong>City Community College:</strong> Adult evening classes, diploma programs, and seminars.</li>
+        </ul>
+    </div>
+
+    <div class="card searchable-item" data-keywords="entertainment leisure park cinema movies gym sports recreation fun hotel">
+        <h2>Entertainment, Hotels & Leisure</h2>
+        <p>Where to relax, exercise, and have fun:</p>
+        <ul>
+            <li><strong>Starlight Cinema:</strong> Latest movie releases, IMAX screens, and ticket bookings.</li>
+            <li><strong>City Fitness Gym:</strong> Weight training, cardio equipment, and group fitness classes.</li>
+            <li><strong>Grand View Hotel:</strong> Visitor lodging, conference rooms, and hospitality services.</li>
+            <li><strong>Greenwood Public Park:</strong> Walking tracks, open green lawns, and children's playgrounds.</li>
+        </ul>
+    </div>
+
+    <div class="card searchable-item" data-keywords="government legal post office police station civic registration ID passport">
+        <h2>Government & Civic Services</h2>
+        <p>Official paperwork, legal help, and administration:</p>
+        <ul>
+            <li><strong>Central Post Office:</strong> Mail delivery, package shipping, and courier drop-offs.</li>
+            <li><strong>Municipal Hall:</strong> City permits, tax services, and public registration.</li>
+            <li><strong>Legal Aid Bureau:</strong> Free community consultations and dispute resolution.</li>
         </ul>
     </div>
 
@@ -148,14 +240,16 @@
         }
 
         function filterContent() {
-            let input = document.getElementById('searchBox').value.toLowerCase();
+            let input = document.getElementById('searchBox5').value || document.getElementById('searchBox').value.toLowerCase();
+            // Fallback for standard searchBox ID used above:
+            let query = document.getElementById('searchBox').value.toLowerCase();
             let items = document.getElementsByClassName('searchable-item');
 
             for (let i = 0; i < items.length; i++) {
                 let text = items[i].innerText.toLowerCase();
                 let keywords = items[i].getAttribute('data-keywords').toLowerCase();
                 
-                if (text.includes(input) || keywords.includes(input)) {
+                if (text.includes(query) || keywords.includes(query)) {
                     items[i].style.display = "";
                 } else {
                     items[i].style.display = "none";
@@ -165,4 +259,5 @@
     </script>
 
 </body>
-</html>
+    </html>
+    
