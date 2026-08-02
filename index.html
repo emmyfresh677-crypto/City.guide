@@ -5,31 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My City Guide</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f9; color: #333; }
-        h1 { color: #007bff; text-align: center; }
-        .card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .ad-space { background: #e9ecef; text-align: center; padding: 20px; margin: 20px 0; border: 1px dashed #ccc; border-radius: 8px; }
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --heading-color: #007bff;
+            --border-color: #e0e0e0;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --heading-color: #4dabf7;
+            --border-color: #2c2c2c;
+        }
+
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            margin: 0; 
+            padding: 16px; 
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        h1 { 
+            color: var(--heading-color); 
+            text-align: left; 
+            font-size: 24px; 
+            margin: 0; 
+        }
+
+        .dark-toggle {
+            background-color: var(--heading-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        #searchBox {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            box-sizing: border-box;
+        }
+
+        .card { 
+            background: var(--card-bg); 
+            padding: 16px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+            margin-bottom: 16px; 
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            color: var(--heading-color);
+            margin-top: 0;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>City Resource Guide</h1>
-    <p style="text-align: center;">Find top local spots and services quickly.</p>
+    <header>
+        <h1>City Resource Guide</h1>
+        <button class="dark-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+    </header>
 
-    <!-- ADVERTISEMENT AREA -->
-    <div class="ad-space" id="ad-box">
-        <p>Ad Placeholder (Your ads will show here)</p>
+    <div class="search-container">
+        <input type="text" id="searchBox" placeholder="Search services, eateries, emergency..." onkeyup="filterContent()">
     </div>
 
-    <div class="card">
-        <h3>Emergency & Utility Services</h3>
-        <p>Local police, fire stations, and hospital contacts.</p>
+    <div class="card searchable-item" data-keywords="emergency police fire hospital ambulance">
+        <h2>Emergency & Utility Services</h2>
+        <p>Key contacts for immediate assistance:</p>
+        <ul>
+            <li><strong>Police / General Emergency:</strong> 911 / Local Hotline</li>
+            <li><strong>Fire Department:</strong> Local Station Dispatch</li>
+            <li><strong>City Hospital / Clinic:</strong> 24/7 Medical Care Unit</li>
+            <li><strong>Power & Water Utility Helpline:</strong> Maintenance Desk</li>
+        </ul>
     </div>
 
-    <div class="card">
-        <h3>Top Rated Eateries</h3>
-        <p>Best affordable food spots in the neighborhood.</p>
+    <div class="card searchable-item" data-keywords="eateries food restaurants best affordable cafes">
+        <h2>Top Rated Eateries</h2>
+        <p>Best affordable food spots and cafes in the neighborhood:</p>
+        <ul>
+            <li><strong>Central Perk Cafe:</strong> Great coffee and morning pastries.</li>
+            <li><strong>Corner Grill:</strong> Quick meals, local recipes, and budget-friendly.</li>
+            <li><strong>Green Bowl Salad Bar:</strong> Fresh organic meals and juices.</li>
+        </ul>
     </div>
+
+    <div class="card searchable-item" data-keywords="directory pharmacy grocery transport transit market">
+        <h2>Neighborhood Directory</h2>
+        <p>Essential local spots and transit hubs:</p>
+        <ul>
+            <li><strong>City Central Pharmacy:</strong> Open daily until late.</li>
+            <li><strong>Fresh Mart Grocery:</strong> Affordable daily supplies and produce.</li>
+            <li><strong>Main Transit Hub:</strong> Bus and shuttle terminal connections.</li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.querySelector('.dark-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.textContent = "Light Mode";
+            } else {
+                btn.textContent = "Dark Mode";
+            }
+        }
+
+        function filterContent() {
+            let input = document.getElementById('searchBox').value.toLowerCase();
+            let items = document.getElementsByClassName('searchable-item');
+
+            for (let i = 0; i < items.length; i++) {
+                let text = items[i].innerText.toLowerCase();
+                let keywords = items[i].getAttribute('data-keywords').toLowerCase();
+                
+                if (text.includes(input) || keywords.includes(input)) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
